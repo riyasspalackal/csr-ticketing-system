@@ -1,0 +1,18 @@
+{
+  "name": "csr-ticketing-system",
+  "homepage": "https://github.com/riyasspalackal/csr-ticketing-system",
+  "description": "A ticketing system for customer service representative.",
+  "main": "",
+  "authors": [
+    "riyasspalackal@gmial.com"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
