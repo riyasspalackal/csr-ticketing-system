@@ -1,0 +1,117 @@
+<div>
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<h1 class="page-header">Dashboard</h1>
+		<div class="row">
+			<div class="col-md-2 col-md-offset-10 col-sm-3 col-sm-offset-9">
+				<a class="btn btn-default" href="#" role="button" data-toggle="modal" data-target="#myModal">Add new ticket</a>
+			</div>
+		</div>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Ticket ID</th>
+						<th>Customer</th>
+						<th>Created by</th>
+						<th>Assigned to</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody ng-repeat="item in tickets  track by $index">
+					<tr>
+						<td>{{$index+1}}</td>
+						<td> <a href="javascript:;" ui-sref="ticket({'ticketId':item.id})">{{item.id}}</a> </td>
+						<td>{{item.customerName}}</td>
+						<td>{{item.createdBy}}</td>
+						<td>{{item.assignTo}}</td>
+						<td>{{item.status}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Ticket</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal" name="ticketForm" novalidate>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="text">Customer ID:</label>
+							<div class="col-sm-10">
+								<input type="text" name="id" class="form-control" ng-model="newTicket.id" id="text" placeholder="Enter customer ID" required/>
+								<div class="form-errors" ng-messages="ticketForm.id.$error " ng-show="ticketForm.id.$invalid && ticketForm.id.$dirty || ticketForm.id.$invalid && ticketForm.$submitted ">
+									<div class="form-error " ng-if="ticketForm.id.$error.required ">This field is required.</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="text">Customer name:</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" name="name" ng-model="newTicket.customerName" id="text" placeholder="Enter customer name" required>
+								<div class="form-errors" ng-messages="ticketForm.name.$error " ng-show="ticketForm.name.$invalid && ticketForm.name.$dirty || ticketForm.name.$invalid && ticketForm.$submitted ">
+									<div class="form-error " ng-if="ticketForm.name.$error.required ">This field is required.</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="text">Description:</label>
+							<div class="col-sm-10">
+								<textarea name="discription" class="form-control" ng-model="newTicket.discription" id="" cols="30" rows="6" placeholder="Enter description" required></textarea>
+								<div class="form-errors" ng-messages="ticketForm.discription.$error " ng-show="ticketForm.discription.$invalid && ticketForm.discription.$dirty || ticketForm.discription.$invalid && ticketForm.$submitted ">
+									<div class="form-error " ng-if="ticketForm.discription.$error.required ">This field is required.</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="text">Created by:</label>
+							<div class="col-sm-10">
+								<select name="createby" class="form-control" id="" ng-model="newTicket.createdBy" required>
+									<option value="">Please select</option>
+									<option value="Rohan">Rohan</option>
+									<option value="Thomas">Thomas</option>
+									<option value="Rahul">Rahul</option>
+									<option value="Rahul">Rahul</option>
+									<option value="Divya">Divya</option>
+								</select>
+								<div class="form-errors" ng-messages="ticketForm.createby.$error " ng-show="ticketForm.createby.$invalid && ticketForm.createby.$dirty || ticketForm.createby.$invalid && ticketForm.$submitted ">
+									<div class="form-error " ng-if="ticketForm.createby.$error.required ">This field is required.</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="text">Assigned to:</label>
+							<div class="col-sm-10">
+								<select name="assignto" class="form-control" ng-model="newTicket.assignTo" required>
+									<option value="">Please select</option>
+									<option value="Rohan">Rohan</option>
+									<option value="Thomas">Thomas</option>
+									<option value="Rahul">Rahul</option>
+									<option value="Rahul">Rahul</option>
+									<option value="Divya">Divya</option>
+								</select>
+								<div class="form-errors" ng-messages="ticketForm.assignto.$error " ng-show="ticketForm.assignto.$invalid && ticketForm.assignto.$dirty || ticketForm.assignto.$invalid && ticketForm.$submitted ">
+									<div class="form-error " ng-if="ticketForm.assignto.$error.required ">This field is required.</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12 btnSubmitAlignRight" >
+								<button type="submit" class="btn btn-default" ng-click="createNewTicket(ticketForm)">Submit</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
