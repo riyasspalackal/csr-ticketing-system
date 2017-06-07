@@ -2,7 +2,7 @@
  * @Author: riyas
  * @Date:   2017-06-07 10:11:23
  * @Last Modified by:   riyas
- * @Last Modified time: 2017-06-07 21:30:14
+ * @Last Modified time: 2017-06-07 21:53:29
  */
 
  (function() {
@@ -32,6 +32,7 @@
  			vm.editable = false;
  		}
  		function addComment() {
+ 			if (vm.comment === undefined || vm.comment === '') { return; }
  			vm.ticketView.comment.push(vm.comment);
  			vm.comment = '';
  		}
